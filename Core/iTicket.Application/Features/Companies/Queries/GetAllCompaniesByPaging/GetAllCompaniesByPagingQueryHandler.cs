@@ -13,7 +13,7 @@ namespace iTicket.Application.Features.Companies.Queries.GetAllCompaniesByPaging
         IHttpContextAccessor httpContextAccessor) : BaseHandler(mapper, unitOfWork, httpContextAccessor), IRequestHandler<GetAllCompaniesByPagingQueryRequest, IList<GetAllCompaniesByPagingQueryResponse>>
     {
         public async Task<IList<GetAllCompaniesByPagingQueryResponse>> Handle(GetAllCompaniesByPagingQueryRequest request, CancellationToken cancellationToken)
-        {
+        {   
             IList<Company> companies = await unitOfWork.GetReadRepository<Company>()
                  .GetAllByPagingAsync(
                 currentPage: request.CurrentPage, 
