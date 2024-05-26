@@ -1,4 +1,5 @@
-﻿using iTicket.Application.Features.Companies.Queries.GetAllCompaniesByPaging;
+﻿using iTicket.Application.Features.Companies.Command.CreateCompany;
+using iTicket.Application.Features.Companies.Queries.GetAllCompaniesByPaging;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,15 @@ namespace iTicket.API.Controllers
         {
             var response = await mediator.Send(request);
             return Ok(response);
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> CreateCompany([FromBody] CreateCompanyCommandRequest request)
+        {
+            await mediator.Send(request);
+            return StatusCode(201);
         }
 
     }
