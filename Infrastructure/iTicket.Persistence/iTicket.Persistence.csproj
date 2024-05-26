@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\iTicket.Application\iTicket.Application.csproj" />
     <ProjectReference Include="..\..\Core\iTicket.Domain\iTicket.Domain.csproj" />
   </ItemGroup>
 
