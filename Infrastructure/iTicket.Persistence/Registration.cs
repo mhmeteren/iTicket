@@ -15,6 +15,7 @@ namespace iTicket.Persistence
                 opt.UseSqlServer(configuration.GetConnectionString("sqlConnetion")));
 
             services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
+            services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
         }
     }
 }
