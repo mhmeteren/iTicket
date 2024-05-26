@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
+using iTicket.Application.Bases;
 using Microsoft.AspNetCore.Http;
-using SendGrid.Helpers.Errors.Model;
 
 namespace iTicket.Application.Exceptions
 {
@@ -48,8 +48,8 @@ namespace iTicket.Application.Exceptions
         private static int GetStatusCode(Exception exception) =>
             exception switch
             {
-                BadRequestException => StatusCodes.Status400BadRequest,
-                NotFoundException => StatusCodes.Status404NotFound,
+                BaseBadRequestException => StatusCodes.Status400BadRequest,
+                BaseNotFoundException => StatusCodes.Status404NotFound,
                 ValidationException => StatusCodes.Status422UnprocessableEntity,
                 _ => StatusCodes.Status500InternalServerError
             };

@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using iTicket.Application.Bases;
 using iTicket.Application.Beheviors;
 using iTicket.Application.Exceptions;
 using MediatR;
@@ -15,12 +16,24 @@ namespace iTicket.Application
         {
             var assembly = Assembly.GetExecutingAssembly();
             services.AddMediatR(conf => conf.RegisterServicesFromAssembly(assembly));
+            services.AddRulesFromAssmblyContaining(assembly, typeof(BaseRules));
 
             services.AddTransient<ExceptionMiddleware>();
 
             services.AddValidatorsFromAssembly(assembly);
             ValidatorOptions.Global.LanguageManager.Culture = new CultureInfo("en-US");
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
+        }
+
+
+        private static IServiceCollection AddRulesFromAssmblyContaining(
+            this IServiceCollection services,
+            Assembly assembly,
+            Type type)
+        {
+            var types = assembly.GetTypes().Where(t => t.IsSubclassOf(type) && t != type).ToList();
+            foreach (var t in types) services.AddTransient(t);
+            return services;
         }
 
     }

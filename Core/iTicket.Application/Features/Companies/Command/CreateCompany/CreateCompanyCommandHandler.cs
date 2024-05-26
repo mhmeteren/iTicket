@@ -1,4 +1,5 @@
 ﻿using iTicket.Application.Bases;
+using iTicket.Application.Features.Companies.Rules;
 using iTicket.Application.Interfaces.AutoMapper;
 using iTicket.Application.Interfaces.UnitOfWorks;
 using iTicket.Domain.Entities;
@@ -10,13 +11,15 @@ namespace iTicket.Application.Features.Companies.Command.CreateCompany
     public class CreateCompanyCommandHandler(
         IMapper mapper,
         IUnitOfWork unitOfWork,
-        IHttpContextAccessor httpContextAccessor) : BaseHandler(mapper, unitOfWork, httpContextAccessor), IRequestHandler<CreateCompanyCommandRequest, Unit>
+        IHttpContextAccessor httpContextAccessor,
+        CompanyRules companyRules) : BaseHandler(mapper, unitOfWork, httpContextAccessor), IRequestHandler<CreateCompanyCommandRequest, Unit>
     {
+        private readonly CompanyRules companyRules = companyRules;
+
         public async Task<Unit> Handle(CreateCompanyCommandRequest request, CancellationToken cancellationToken)
         {
             var companyCheck = await unitOfWork.GetReadRepository<Company>().GetAsync(x => x.Name.Equals(request.Name));
-
-            if (companyCheck != null) { /*write rule*/}
+            await companyRules.CompanyTitleMustBeUnique(request.Name, companyCheck);
 
             Company company = mapper.Map<Company, CreateCompanyCommandRequest>(request);
             await unitOfWork.GetWriteRepository<Company>().AddAsync(company);
