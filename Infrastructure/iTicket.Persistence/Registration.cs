@@ -1,6 +1,8 @@
 ﻿using iTicket.Application.Interfaces.Repositories;
+using iTicket.Application.Interfaces.UnitOfWorks;
 using iTicket.Persistence.Context;
 using iTicket.Persistence.Repositories;
+using iTicket.Persistence.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +18,7 @@ namespace iTicket.Persistence
 
             services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
             services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }
