@@ -1,4 +1,6 @@
 using iTicket.Persistence;
+using iTicket.Application;
+using iTicket.Mapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,9 +18,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddApplication();
+builder.Services.AddCustomMapper();
 
 var app = builder.Build();
 

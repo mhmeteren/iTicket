@@ -15,10 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\Core\iTicket.Application\iTicket.Application.csproj" />
+    <ProjectReference Include="..\..\Core\Mapper\iTicket.Mapper.csproj" />
     <ProjectReference Include="..\..\Infrastructure\iTicket.Persistence\iTicket.Persistence.csproj" />
   </ItemGroup>
 
