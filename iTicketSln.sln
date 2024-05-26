@@ -9,15 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{CCFBB699-22D7-4559-AC31-040E708F699B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTicket.Application", "Core\iTicket.Application\iTicket.Application.csproj", "{AC71B532-C7B4-448F-BB77-21B45B280638}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iTicket.Application", "Core\iTicket.Application\iTicket.Application.csproj", "{AC71B532-C7B4-448F-BB77-21B45B280638}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTicket.Domain", "Core\iTicket.Domain\iTicket.Domain.csproj", "{E58883EB-E69C-4218-A9FF-0C27C3A07E11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iTicket.Domain", "Core\iTicket.Domain\iTicket.Domain.csproj", "{E58883EB-E69C-4218-A9FF-0C27C3A07E11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTicket.Infrastructure", "Infrastructure\iTicket.Infrastructure\iTicket.Infrastructure.csproj", "{F0613E35-97F4-4E32-837E-266E6FD8205B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iTicket.Infrastructure", "Infrastructure\iTicket.Infrastructure\iTicket.Infrastructure.csproj", "{F0613E35-97F4-4E32-837E-266E6FD8205B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTicket.Persistence", "Infrastructure\iTicket.Persistence\iTicket.Persistence.csproj", "{C4EFD227-19E9-4277-925A-78F79D75AA63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iTicket.Persistence", "Infrastructure\iTicket.Persistence\iTicket.Persistence.csproj", "{C4EFD227-19E9-4277-925A-78F79D75AA63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTicket.API", "Presentation\iTicket.API\iTicket.API.csproj", "{D6C025E7-639A-49C4-A68C-D1A8815A8A5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iTicket.API", "Presentation\iTicket.API\iTicket.API.csproj", "{D6C025E7-639A-49C4-A68C-D1A8815A8A5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTicket.Mapper", "Core\Mapper\iTicket.Mapper.csproj", "{575F2B20-30A8-4C9F-BC45-948A12AB200F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{D6C025E7-639A-49C4-A68C-D1A8815A8A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6C025E7-639A-49C4-A68C-D1A8815A8A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6C025E7-639A-49C4-A68C-D1A8815A8A5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{575F2B20-30A8-4C9F-BC45-948A12AB200F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{575F2B20-30A8-4C9F-BC45-948A12AB200F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{575F2B20-30A8-4C9F-BC45-948A12AB200F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{575F2B20-30A8-4C9F-BC45-948A12AB200F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{F0613E35-97F4-4E32-837E-266E6FD8205B} = {494C1824-18E2-4451-AD39-E336670058CF}
 		{C4EFD227-19E9-4277-925A-78F79D75AA63} = {494C1824-18E2-4451-AD39-E336670058CF}
 		{D6C025E7-639A-49C4-A68C-D1A8815A8A5D} = {CCFBB699-22D7-4559-AC31-040E708F699B}
+		{575F2B20-30A8-4C9F-BC45-948A12AB200F} = {57594EAE-F14A-4118-99BE-2424D5214A7B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DFFB92CF-2DF4-4F30-B91F-2FC5F42780DE}
