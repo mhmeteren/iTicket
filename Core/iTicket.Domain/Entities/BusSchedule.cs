@@ -7,11 +7,15 @@ namespace iTicket.Domain.Entities
         public int TripType { get; set; }
         public int SeatCount { get; set; }
 
-        public int EmployeeId { get; set; }
+        public Guid EmployeeId { get; set; }
         public Employee Employee { get; set; }
 
         public int CompanyId { get; set; }
         public Company Company { get; set; }
+
+        public ICollection<BusRoute> BusRoutes { get; set; }
+        public ICollection<BusSeat> BusSeats { get; set; }
+
 
     }
 

@@ -7,7 +7,7 @@ namespace iTicket.Domain.Entities
         public string FullName { get; set; }
         public int Priority { get; set; }
 
-        public int Gender { get; set; }
+        public string? Gender { get; set; }
         public bool IsTurkishCitizen { get; set; }
         public string? IdentificationNo { get; set; }
         public string? PassportNo { get; set; }
@@ -18,5 +18,8 @@ namespace iTicket.Domain.Entities
 
         public Guid UserId { get; set; }
         public User User { get; set; }
+
+        public ICollection<BusSeat> BusSeats { get; set; }
+
     }
 }

@@ -2,10 +2,10 @@
 
 namespace iTicket.Domain.Entities
 {
-    public class BusRoutes : EntityBase
+    public class BusRoute : EntityBase
     {
 
-        public int Amount { get; set; }
+        public int Price { get; set; }
         public DateTime Date { get; set; }
 
         public int BusStationId { get; set; }
@@ -13,6 +13,7 @@ namespace iTicket.Domain.Entities
 
         public int BusScheduleId { get; set; }
         public BusSchedule BusSchedule { get; set; }
+
     }
 
 

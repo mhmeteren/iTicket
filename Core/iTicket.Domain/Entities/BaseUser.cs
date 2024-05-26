@@ -8,7 +8,7 @@ namespace iTicket.Domain.Entities
 
         public bool IsDeleted { get; set; }
         public DateTime DeleteDate { get; set; }
-        public DateTime CreateDate { get; set; }
+        public DateTime CreateDate { get; set; } = DateTime.Now;
 
 
         public string? RefreshToken { get; set; }

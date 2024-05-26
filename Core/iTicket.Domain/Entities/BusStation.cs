@@ -6,6 +6,8 @@ namespace iTicket.Domain.Entities
     {
         public string Name { get; set; }
         public string City { get; set; }
+
+        public ICollection<BusRoute> BusRoutes { get; set; }
     }
 
 

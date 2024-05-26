@@ -6,5 +6,8 @@ namespace iTicket.Domain.Entities
     {
         public string Name { get; set; }
         public string LogoUrl { get; set; }
+        public ICollection<BusSchedule> BusSchedules { get; set; }
+        public ICollection<Employee> Employees { get; set; }
+
     }
 }
