@@ -2,7 +2,7 @@
 
 namespace iTicket.Application.Features.Auth.Exceptions
 {
-    public class EmailAddressShouldBeValidException() : BaseBadRequestException("Email address invalid")
+    public class UserShouldBeValidException() : BaseBadRequestException("Invalid User")
     {
     }
 }

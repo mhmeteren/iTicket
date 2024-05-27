@@ -18,10 +18,10 @@ namespace iTicket.Application.Features.Auth.Rules
             return Task.CompletedTask;
         }
 
-        public Task RefreshTokenCheck(string? userRefreshToken, string requestRefreshToken)
+        public Task RefreshTokenShouldBeValid(string? userRefreshToken, string requestRefreshToken)
         {
-            if (userRefreshToken != null && !userRefreshToken.Equals(requestRefreshToken))
-                throw new RefreshTokenCheckException();
+            if (userRefreshToken is null || !userRefreshToken.Equals(requestRefreshToken))
+                throw new RefreshTokenShouldBeValidException();
 
             return Task.CompletedTask;
         }
@@ -33,9 +33,16 @@ namespace iTicket.Application.Features.Auth.Rules
             return Task.CompletedTask;
         }
 
-        public Task EmailAddressShouldBeValid(BaseUser? user)
+        public Task UserShouldBeValid(BaseUser? user)
         {
-            if (user is null) throw new EmailAddressShouldBeValidException();
+            if (user is null) throw new UserShouldBeValidException();
+            return Task.CompletedTask;
+        }
+
+        public Task SessionAlreadyRevoked(BaseUser user)
+        {
+            if (user.RefreshToken is null || user.RefreshTokenExpireTime is null)
+                throw new SessionAlreadyRevokedException();
             return Task.CompletedTask;
         }
     }

@@ -1,7 +1,9 @@
 ﻿using iTicket.Application.Features.Auth.Command.Login;
 using iTicket.Application.Features.Auth.Command.RefreshToken;
 using iTicket.Application.Features.Auth.Command.Register;
+using iTicket.Application.Features.Auth.Command.Revoke;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace iTicket.API.Controllers
@@ -34,6 +36,14 @@ namespace iTicket.API.Controllers
         {
             RefreshTokenCommandResponse response = await mediator.Send(request);
             return StatusCode(StatusCodes.Status200OK, response);
+        }
+
+        [Authorize(Roles = "user")]
+        [HttpPost]
+        public async Task<IActionResult> RevokeToken()
+        {
+            await mediator.Send(new RevokeCommandRequest());
+            return StatusCode(StatusCodes.Status200OK);
         }
     }
 }

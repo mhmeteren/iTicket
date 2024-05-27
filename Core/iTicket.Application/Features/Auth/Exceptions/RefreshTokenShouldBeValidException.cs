@@ -2,7 +2,7 @@
 
 namespace iTicket.Application.Features.Auth.Exceptions
 {
-    public class RefreshTokenCheckException() : BaseBadRequestException("Invalid refresh token.")
+    public class RefreshTokenShouldBeValidException() : BaseBadRequestException("Invalid refresh token.")
     {
     }
 
