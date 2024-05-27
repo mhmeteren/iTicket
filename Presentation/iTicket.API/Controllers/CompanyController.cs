@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace iTicket.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class CompanyController(IMediator mediator) : ControllerBase
     {
