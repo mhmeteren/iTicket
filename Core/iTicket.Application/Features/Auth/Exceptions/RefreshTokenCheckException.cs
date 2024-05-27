@@ -2,7 +2,7 @@
 
 namespace iTicket.Application.Features.Auth.Exceptions
 {
-    public class RefreshTokenShoulNotBeExpiredException() : BaseBadRequestException("Session has expired")
+    public class RefreshTokenCheckException() : BaseBadRequestException("Invalid refresh token.")
     {
     }
 

@@ -18,6 +18,14 @@ namespace iTicket.Application.Features.Auth.Rules
             return Task.CompletedTask;
         }
 
+        public Task RefreshTokenCheck(string? userRefreshToken, string requestRefreshToken)
+        {
+            if (userRefreshToken != null && !userRefreshToken.Equals(requestRefreshToken))
+                throw new RefreshTokenCheckException();
+
+            return Task.CompletedTask;
+        }
+
         public Task RefreshTokenShoulNotBeExpired(DateTime? refreshTokenExpireTime)
         {
             if (refreshTokenExpireTime is not null && refreshTokenExpireTime <= DateTime.Now)

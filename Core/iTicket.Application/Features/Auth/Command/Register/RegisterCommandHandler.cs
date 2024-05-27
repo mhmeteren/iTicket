@@ -33,7 +33,7 @@ namespace iTicket.Application.Features.Auth.Command.Register
             {
                 await userManager.AddToRoleAsync(user, "user");
             }
-
+            //Send Confirmation email
             return Unit.Value;
         }
     }
