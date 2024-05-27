@@ -2,6 +2,7 @@ using iTicket.Persistence;
 using iTicket.Application;
 using iTicket.Mapper;
 using iTicket.Application.Exceptions;
+using iTicket.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 builder.Services.AddCustomMapper();
 
