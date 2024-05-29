@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using iTicket.Application.Bases;
+using iTicket.Application.Features.Auth.Exceptions;
 using Microsoft.AspNetCore.Http;
 
 namespace iTicket.Application.Exceptions
@@ -42,6 +43,7 @@ namespace iTicket.Application.Exceptions
             ex switch
             {
                 ValidationException => ((ValidationException)ex).Errors.Select(ex => ex.ErrorMessage),
+                IdentityResultException => ((IdentityResultException)ex).Errors,
                 _ => [ex.Message]
             };
 
@@ -50,7 +52,7 @@ namespace iTicket.Application.Exceptions
             {
                 BaseBadRequestException => StatusCodes.Status400BadRequest,
                 BaseNotFoundException => StatusCodes.Status404NotFound,
-                ValidationException => StatusCodes.Status422UnprocessableEntity,
+                ValidationException or IdentityResultException => StatusCodes.Status422UnprocessableEntity,
                 _ => StatusCodes.Status500InternalServerError
             };
     }

@@ -7,5 +7,6 @@
 
         TDestination Map<TDestination>(object source, string? ignore = null);
         IList<TDestination> Map<TDestination>(IList<object> sources, string? ignore = null);
+        TDestination Map<TSource, TDestination>(TSource source, TDestination destination);
     }
 }

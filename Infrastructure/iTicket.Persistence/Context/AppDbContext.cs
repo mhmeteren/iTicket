@@ -8,7 +8,8 @@ namespace iTicket.Persistence.Context
     public class AppDbContext(DbContextOptions options) : IdentityDbContext<BaseUser, Role, Guid>(options)
     {
 
-       // public DbSet<User> User { get; set; }
+        // public DbSet<User> User { get; set; }
+        public DbSet<Admin> Admins { get; set; }
         public DbSet<BusRoute> BusRoutes { get; set; }
         public DbSet<BusSchedule> BusSchedules { get; set; }
         public DbSet<BusSeat> BusSeats { get; set; }

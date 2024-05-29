@@ -1,9 +1,9 @@
 ﻿namespace iTicket.Application.Features.Companies.Queries.GetAllCompaniesByPaging
 {
-    public class GetAllCompaniesByPagingQueryResponse
+    public record GetAllCompaniesByPagingQueryResponse
     {
-        public string Name { get; set; }
-        public string LogoUrl { get; set; }
+        public string Name { get; init; }
+        public string LogoUrl { get; init; }
     }
 
 }

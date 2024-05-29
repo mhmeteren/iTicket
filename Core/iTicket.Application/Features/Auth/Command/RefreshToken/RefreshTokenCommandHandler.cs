@@ -31,6 +31,8 @@ namespace iTicket.Application.Features.Auth.Command.RefreshToken
             string email = principal.FindFirstValue(ClaimTypes.Email);
 
             BaseUser? user = await userManager.FindByEmailAsync(email);
+            await authRules.UserIsDeleted(user);
+            await authRules.UserShouldBeConfirmed(user);
             await authRules.RefreshTokenShouldBeValid(user?.RefreshToken, request.RefreshToken);
             await authRules.RefreshTokenShoulNotBeExpired(user.RefreshTokenExpireTime);
 

@@ -30,8 +30,11 @@ namespace iTicket.Application.Features.Auth.Command.Login
         public async Task<LoginCommandResponse> Handle(LoginCommandRequest request, CancellationToken cancellationToken)
         {
             BaseUser? user = await userManager.FindByEmailAsync(request.Email);
+            await authRules.UserIsDeleted(user);
+            await authRules.UserShouldBeConfirmed(user);
+
             bool checkPassword = await userManager.CheckPasswordAsync(user, request.Password);
-            await authRules.EmailOrPasswordShouldNotBeInvalid(user, checkPassword);
+            await authRules.EmailOrPasswordShouldNotBeInvalid(checkPassword);
 
             IList<string> roles = await userManager.GetRolesAsync(user);
 

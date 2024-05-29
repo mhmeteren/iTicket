@@ -32,6 +32,11 @@ namespace iTicket.Mapper.AutoMapper
             return MapperContainer.Map<IList<TDestination>>(sources);
         }
 
+        public TDestination Map<TSource, TDestination>(TSource source, TDestination destination)
+        {
+            Config<TSource, TDestination>(depth: 5, null);
+            return MapperContainer.Map(source, destination);
+        }
 
         protected void Config<TDestination, TSource>(int depth = 5, string? ignore = null)
         {

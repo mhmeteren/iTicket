@@ -6,15 +6,42 @@ namespace iTicket.Application.Features.Auth.Rules
 {
     public class AuthRules : BaseRules
     {
+
+
+        public Task UserIsDeleted(BaseUser? user)
+        {
+            if (user is null || user.IsDeleted) throw new UserIsDeletedException();
+            return Task.CompletedTask;
+        }
+
+        public Task UserShouldBeConfirmed(BaseUser user)
+        {
+            if (!user.EmailConfirmed) throw new UserShouldBeConfirmedException();
+            return Task.CompletedTask;
+        }
+
+        public Task UserShouldNotBeExistIgnoreOwn(BaseUser? user, Guid requestId)
+        {
+            if (user is not null && !user.Id.Equals(requestId)) throw new UserAlreadyExistsException();
+            return Task.CompletedTask;
+        }
+
         public Task UserShouldNotBeExist(BaseUser? user)
         {
             if (user is not null) throw new UserAlreadyExistsException();
             return Task.CompletedTask;
         }
 
-        public Task EmailOrPasswordShouldNotBeInvalid(BaseUser? user, bool checkPassword)
+
+        public Task UserRoleShouldBeEquals(string userRole, string requestRole)
         {
-            if (user is null || !checkPassword) throw new EmailOrPasswordShouldNotBeInvalidException();
+            if (userRole is null || !userRole.Equals(requestRole)) throw new UserShouldBeExistException();
+            return Task.CompletedTask;
+        }
+
+        public Task EmailOrPasswordShouldNotBeInvalid(bool checkPassword)
+        {
+            if (!checkPassword) throw new EmailOrPasswordShouldNotBeInvalidException();
             return Task.CompletedTask;
         }
 
@@ -33,11 +60,6 @@ namespace iTicket.Application.Features.Auth.Rules
             return Task.CompletedTask;
         }
 
-        public Task UserShouldBeValid(BaseUser? user)
-        {
-            if (user is null) throw new UserShouldBeValidException();
-            return Task.CompletedTask;
-        }
 
         public Task SessionAlreadyRevoked(BaseUser user)
         {

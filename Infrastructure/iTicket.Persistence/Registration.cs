@@ -4,6 +4,7 @@ using iTicket.Domain.Entities;
 using iTicket.Persistence.Context;
 using iTicket.Persistence.Repositories;
 using iTicket.Persistence.UnitOfWorks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,7 +34,10 @@ namespace iTicket.Persistence
                 opts.SignIn.RequireConfirmedEmail = true;
             })
                 .AddRoles<Role>()
-                .AddEntityFrameworkStores<AppDbContext>();
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddTokenProvider<DataProtectorTokenProvider<BaseUser>>(TokenOptions.DefaultProvider);
+
+            
         }
     }
 }

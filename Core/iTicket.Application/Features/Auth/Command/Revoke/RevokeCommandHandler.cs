@@ -24,7 +24,8 @@ namespace iTicket.Application.Features.Auth.Command.Revoke
         {
 
             BaseUser? user = await userManager.FindByIdAsync(UserId);
-            await authRules.UserShouldBeValid(user);
+            await authRules.UserIsDeleted(user);
+            await authRules.UserShouldBeConfirmed(user);
             await authRules.SessionAlreadyRevoked(user);
 
             user.RefreshToken = null;
