@@ -1,6 +1,6 @@
 ﻿namespace iTicket.Application.Bases
 {
-    public class BaseRequestForPaging
+    public abstract class BaseRequestForPaging
     {
         private int _currentPage = 1;
 
