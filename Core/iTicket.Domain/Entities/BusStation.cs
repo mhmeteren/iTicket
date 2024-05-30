@@ -9,7 +9,4 @@ namespace iTicket.Domain.Entities
 
         public ICollection<BusRoute> BusRoutes { get; set; }
     }
-
-
-
 }
