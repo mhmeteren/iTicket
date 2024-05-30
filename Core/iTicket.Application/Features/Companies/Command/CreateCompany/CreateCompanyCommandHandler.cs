@@ -19,9 +19,11 @@ namespace iTicket.Application.Features.Companies.Command.CreateCompany
         public async Task<Unit> Handle(CreateCompanyCommandRequest request, CancellationToken cancellationToken)
         {
             var companyCheck = await unitOfWork.GetReadRepository<Company>().GetAsync(x => x.Name.Equals(request.Name));
-            await companyRules.CompanyTitleMustBeUnique(request.Name, companyCheck);
+            await companyRules.CompanyNameMustBeUnique(companyCheck);
 
             Company company = mapper.Map<Company, CreateCompanyCommandRequest>(request);
+            //Upload Logo and set LogoUrl
+            company.LogoUrl = "test://url";
             await unitOfWork.GetWriteRepository<Company>().AddAsync(company);
             await unitOfWork.SaveAsync();
 

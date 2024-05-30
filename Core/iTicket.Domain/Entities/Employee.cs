@@ -1,6 +1,8 @@
-﻿namespace iTicket.Domain.Entities
+﻿using iTicket.Domain.Common;
+
+namespace iTicket.Domain.Entities
 {
-    public class Employee : BaseUser
+    public class Employee : BaseUser, IEntityBase
     {
 
         public string FullName { get; set; }
