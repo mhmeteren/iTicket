@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Admins\Exceptions\" />
-    <Folder Include="Features\Admins\Rules\" />
   </ItemGroup>
 
 </Project>

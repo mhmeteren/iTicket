@@ -18,7 +18,7 @@ namespace iTicket.Application.Features.Companies.Queries.GetAllCompaniesByPaging
                  .GetAllByPagingAsync(
                 currentPage: request.CurrentPage, 
                 pageSize: request.PageSize,
-                predicate: x => !x.IsDeleted);
+                predicate: x => x.IsDeleted == request.IsDeleted);
 
             return mapper.Map<GetAllCompaniesByPagingQueryResponse, Company>(companies);
         }

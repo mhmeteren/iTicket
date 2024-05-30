@@ -20,9 +20,15 @@ namespace iTicket.Persistence.Repositories
             await Task.Run(() => Table.Update(entity));
             return entity;
         }
+        public async Task UpdateRangeAsync(IList<T> entities)
+        {
+            await Task.Run(() => Table.UpdateRange(entities));
+        }
 
         public async Task HardDeleteAsync(T entity) => await Task.Run(() => Table.Remove(entity));
 
         public async Task HardDeleteRangeAsync(IList<T> entities) => await Task.Run(() => Table.RemoveRange(entities));
+
+
     }
 }
