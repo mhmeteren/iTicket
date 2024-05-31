@@ -11,7 +11,7 @@ namespace iTicket.Persistence.Configurations
             builder.Property(x => x.FullName).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Gender).IsRequired().HasMaxLength(10);
             builder.Property(x => x.Priority).IsRequired();
-            builder.Property(x => x.IsTurkishCitizen).HasDefaultValue(true);
+            builder.Property(x => x.IsNotTurkishCitizen).HasDefaultValue(false);
             builder.Property(x => x.IdentificationNo).IsRequired(false).HasMaxLength(11);
             builder.Property(x => x.PassportNo).IsRequired(false).HasMaxLength(9);
             builder.Property(x => x.Nationality).IsRequired(false).HasMaxLength(50);
