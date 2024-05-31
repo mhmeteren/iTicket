@@ -8,7 +8,7 @@ namespace iTicket.Domain.Entities
         public int Priority { get; set; }
 
         public string? Gender { get; set; }
-        public bool IsTurkishCitizen { get; set; }
+        public bool IsNotTurkishCitizen { get; set; }
         public string? IdentificationNo { get; set; }
         public string? PassportNo { get; set; }
         public string? Nationality { get; set; }
