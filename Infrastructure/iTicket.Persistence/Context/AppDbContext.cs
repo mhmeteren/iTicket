@@ -17,6 +17,7 @@ namespace iTicket.Persistence.Context
         public DbSet<Company> Companies { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Passenger> Passengers { get; set; }
+        public DbSet<PaymentTransaction> PaymentTransactions { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

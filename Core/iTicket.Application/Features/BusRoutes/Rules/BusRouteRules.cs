@@ -12,4 +12,5 @@ namespace iTicket.Application.Features.BusRoutes.Rules
             return Task.CompletedTask;
         }
     }
+
 }
