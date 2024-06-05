@@ -20,6 +20,8 @@ namespace iTicket.Domain.Entities
 
         public int BusScheduleId { get; set; }
         public BusSchedule BusSchedule { get; set; }
+
+        public ICollection<PaymentTransaction> PaymentTransactions { get; set; }
     }
 
 }

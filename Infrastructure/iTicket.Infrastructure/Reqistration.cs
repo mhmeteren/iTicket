@@ -1,4 +1,6 @@
-﻿using iTicket.Application.Interfaces.Tokens;
+﻿using iTicket.Application.Interfaces.Payments;
+using iTicket.Application.Interfaces.Tokens;
+using iTicket.Infrastructure.Payments;
 using iTicket.Infrastructure.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
@@ -35,6 +37,10 @@ namespace iTicket.Infrastructure
                     ClockSkew = TimeSpan.Zero,
                 };
             });
+
+
+            services.Configure<Iyzipay.Options>(configuration.GetSection("Payment"));
+            services.AddTransient<IPaymentService, IyzipayPaymentService>();
 
         }
     }

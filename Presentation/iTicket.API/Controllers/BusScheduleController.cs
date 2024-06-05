@@ -3,6 +3,7 @@ using iTicket.Application.Features.BusRoutes.Command.SoftDeleteBusRoute;
 using iTicket.Application.Features.BusSchedules.Command.CreateBusSchedule;
 using iTicket.Application.Features.BusSchedules.Command.SoftDeleteBusSchedule;
 using iTicket.Application.Features.BusSchedules.Command.UpdateBusSchedule;
+using iTicket.Application.Features.BusSchedules.Queries.GetAllBusSchedulesByRoutesAndPaging;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,16 @@ namespace iTicket.API.Controllers
     public class BusScheduleController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator mediator = mediator;
+
+
+        [HttpGet]
+        [ProducesResponseType<IList<GetAllBusSchedulesByRoutesAndPagingQueryResponse>>(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllBusSchedulesByRoutesAndPaging([FromQuery] GetAllBusSchedulesByRoutesAndPagingQueryRequest request)
+        {
+            IList<GetAllBusSchedulesByRoutesAndPagingQueryResponse> bs = await mediator.Send(request);
+            return Ok(bs);
+        }
+
 
 
         [HttpPost]
@@ -61,5 +72,6 @@ namespace iTicket.API.Controllers
             await mediator.Send(request);
             return NoContent();
         }
+
     }
 }
