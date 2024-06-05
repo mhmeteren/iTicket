@@ -10,5 +10,12 @@ namespace iTicket.Application.Features.BusSeats.Rules
             if (status.Equals("failure")) throw new PaymentResultShouldBeSuccessException();
             return Task.CompletedTask;
         }
+
+        public Task RefundResultStatusShouldNotBeFailure(string status)
+        {
+            if (status.Equals("failure")) throw new RefundResultShouldBeSuccessException();
+            return Task.CompletedTask;
+        }
+
     }
 }

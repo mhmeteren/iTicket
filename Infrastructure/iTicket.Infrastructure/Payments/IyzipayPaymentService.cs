@@ -3,7 +3,6 @@ using iTicket.Application.Interfaces.Payments;
 using iTicket.Domain.Entities;
 using Iyzipay.Model;
 using Iyzipay.Request;
-using MediatR;
 using Microsoft.Extensions.Options;
 
 namespace iTicket.Infrastructure.Payments
@@ -12,6 +11,16 @@ namespace iTicket.Infrastructure.Payments
     {
         private readonly Iyzipay.Options options = paymentSettings.Value;
 
+        public Refund RefundPaymentRequest(RefundRequest refundRequest)
+        {
+            CreateRefundRequest request = new()
+            {
+                PaymentTransactionId = refundRequest.PaymentTransactionId,
+                Price = refundRequest.Price
+            };
+
+            return Refund.Create(request, options);
+        }
 
         public Payment CreatePaymentRequest(PaymentRequest paymentRequest)
         {
