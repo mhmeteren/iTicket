@@ -1,6 +1,8 @@
 ﻿using iTicket.Application.Interfaces.Payments;
+using iTicket.Application.Interfaces.RedisCache;
 using iTicket.Application.Interfaces.Tokens;
 using iTicket.Infrastructure.Payments;
+using iTicket.Infrastructure.RedisCache;
 using iTicket.Infrastructure.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
@@ -41,6 +43,17 @@ namespace iTicket.Infrastructure
 
             services.Configure<Iyzipay.Options>(configuration.GetSection("Payment"));
             services.AddTransient<IPaymentService, IyzipayPaymentService>();
+
+            var redisCacheSettings = configuration.GetSection("RedisCacheSettings");
+            services.Configure<RedisCacheSettings>(redisCacheSettings);
+            services.AddTransient<IRedisCacheService, RedisCacheService>();
+
+            services.AddStackExchangeRedisCache(opt =>
+            {
+                opt.Configuration = redisCacheSettings["ConnectionString"];
+                opt.InstanceName = redisCacheSettings["InstanceName"];
+
+            });
 
         }
     }
